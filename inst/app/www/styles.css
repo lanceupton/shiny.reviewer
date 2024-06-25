@@ -1,0 +1,30 @@
+
+.content_blacklisted {
+  background: #171717;
+  color: #DADADA;
+  border: 2px solid #E63200;
+}
+
+.content_5star {
+  background: linear-gradient(45deg, #ffec00, #e6af00);
+  color: #3D3D3D;
+  font-weight: bold;
+  border: 2px solid #3D3D3D;
+}
+
+.content_5star:before, .content_5star:after {
+  content: '★';
+  margin: 0 10px;
+}
+
+.content_unreviewed {
+  background: #bfbcb0;
+  color: #3D3D3D;
+  border: 2px solid #3D3D3D;
+}
+
+.content_default {
+  background: #00b4e6;
+  color: #3D3D3D;
+  border: 2px solid #3D3D3D;
+}

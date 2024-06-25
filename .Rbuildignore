@@ -1,0 +1,9 @@
+^renv$
+^renv\.lock$
+^\.gitignore$
+^\.Rprofile$
+^\.Rproj\.user$
+^.*\.Rproj$
+^dev$
+^data-raw$
+^LICENSE\.md$

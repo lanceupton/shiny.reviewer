@@ -1,0 +1,33 @@
+group_id,id,title
+mushroom_cup,luigi_circuit,Luigi Circuit
+mushroom_cup,moo_moo_meadows,Moo Moo Meadows
+mushroom_cup,mushroom_gorge,Mushroom Gorge
+mushroom_cup,toads_factory,Toads Factory
+flower_cup,mario_circuit,Mario Circuit
+flower_cup,coconut_mall,Coconut Mall
+flower_cup,dk_summit,DK Summit
+flower_cup,warios_gold_mine,Warios Gold Mine
+star_cup,daisy_circuit,Daisy Circuit
+star_cup,koopa_cape,Koopa Cape
+star_cup,maple_treeway,Maple Treeway
+star_cup,grumble_volcano,Grumble Volcano
+special_cup,dry_dry_ruins,Dry Dry Ruins
+special_cup,moonview_highway,Moonview Highway
+special_cup,bowsers_castle,Bowsers Castle
+special_cup,rainbow_road,Rainbow Road
+shell_cup,gcn_peach_beach,GCN Peach Beach
+shell_cup,ds_yoshi_falls,DS Yoshi Falls
+shell_cup,snes_ghost_valley_2,SNES Ghost Valley 2
+shell_cup,n64_mario_raceway,N64 Mario Raceway
+banana_cup,n64_sherbet_land,N64 Sherbet Land
+banana_cup,gba_shy_guy_beach,GBA Shy Guy Beach
+banana_cup,ds_delfino_square,DS Delfino Square
+banana_cup,gcn_waluigi_stadium,GCN Waluigi Stadium
+leaf_cup,ds_desert_hills,DS Desert Hills
+leaf_cup,gba_bowser_castle_3,GBA Bowser Castle 3
+leaf_cup,n64_dks_jungle_parkway,N64 DKs Jungle Parkway
+leaf_cup,gcn_mario_circuit,GCN Mario Circuit
+lightning_cup,snes_mario_circuit_3,SNES Mario Circuit 3
+lightning_cup,ds_peach_gardens,DS Peach Gardens
+lightning_cup,gcn_dk_mountain,GCN DK Mountain
+lightning_cup,n64_bowsers_castle,N64 Bowsers Castle
