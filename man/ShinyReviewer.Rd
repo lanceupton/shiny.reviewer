@@ -8,9 +8,6 @@ ShinyReviewer R6 Class.
 
 ShinyReviewer R6 Class.
 }
-\details{
-Use this to create ShinyReviewer application instances.
-}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -31,9 +28,9 @@ Create a ShinyReviewer object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{reviews}}{A data frame with \code{content_id}, \code{timestamp}, \code{rating},
-\code{difficulty}, \code{blacklist}, and \code{notes}. The row with the most recent
-\code{timestamp} is used for each \code{content_id}.}
+\item{\code{reviews}}{(Optional) A data frame with \code{content_id}, \code{timestamp},
+\code{rating}, \code{difficulty}, \code{blacklist}, and \code{notes}. The row with the most
+recent \code{timestamp} is used for each \code{content_id}.}
 
 \item{\code{content_meta}}{A data frame with \code{group_id} (optional), \code{id}, and
 \code{title}. If \code{group_id} is provided, content is grouped within cards.}

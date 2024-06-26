@@ -4,7 +4,7 @@ app_sys <- function(...) {
 }
 
 #' @importFrom dplyr bind_rows
-make_app_ui <- function(LATEST_REVIEWS, title, content_meta) {
+make_app_ui <- function(LATEST_REVIEWS, content_meta, title) {
   function(req) {
     reviews <- bind_rows(isolate(reactiveValuesToList(LATEST_REVIEWS)))
     tagList(
@@ -23,11 +23,14 @@ make_app_ui <- function(LATEST_REVIEWS, title, content_meta) {
   }
 }
 
+#' @importFrom dplyr bind_rows
 make_app_server <- function(LATEST_REVIEWS, content_meta, callback) {
   function(input, output, session) {
     # Returns list of filter settings
     filter_settings <- mod_filter_server("filter")
-    # Styles/filters content and returns clicked content_id
+    # Styles content based on latest review
+    # Shows/hides content/groups based on filter settings
+    # Returns content_id of clicked content
     click_content <- mod_explore_server("explore", LATEST_REVIEWS, content_meta)
     # Shows content review popup and returns new review
     add_review <- mod_review_server("review", LATEST_REVIEWS, click_content)
@@ -42,9 +45,10 @@ make_app_server <- function(LATEST_REVIEWS, content_meta, callback) {
       SESSION_REVIEWS(updated)
       LATEST_REVIEWS[[new$content_id]] <- new
     })
+    # Submit session reviews to callback when session ends
     onSessionEnded(function() {
       if (is.null(callback)) return()
-      df <- bind_rows(isolate(SESSION_REVIEWS()))
+      df <- isolate(SESSION_REVIEWS())
       callback(df)
     })
   }
