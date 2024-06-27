@@ -10,6 +10,9 @@ NULL
 #' @rdname DEV_auth
 #' @export
 DEV_auth_set <- function(email, file = ".secrets/gs4-token.rds") {
+  if (!requireNamespace("gargle")) {
+    stop("Please install `gargle` to use this method.")
+  }
   if (!requireNamespace("googlesheets4")) {
     stop("Please install `googlesheets4` to use this method.")
   }
@@ -49,6 +52,9 @@ DEV_auth_set <- function(email, file = ".secrets/gs4-token.rds") {
 #' @rdname DEV_auth
 #' @export
 DEV_auth_get <- function() {
+  if (!requireNamespace("gargle")) {
+    stop("Please install `gargle` to use this method.")
+  }
   if (!requireNamespace("googlesheets4")) {
     stop("Please install `googlesheets4` to use this method.")
   }
