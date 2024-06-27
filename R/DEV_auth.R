@@ -8,11 +8,11 @@
 NULL
 
 #' @rdname DEV_auth
-#' 
-#' @importFrom googlesheets4 gs4_auth gs4_token
-#' @importFrom gargle secret_make_key secret_write_rds
 #' @export
 DEV_auth_set <- function(email, file = ".secrets/gs4-token.rds") {
+  if (!requireNamespace("googlesheets4")) {
+    stop("Please install `googlesheets4` to use this method.")
+  }
   message("Creating a gs4 token for <", email, ">")
   key <- secret_make_key()
   gs4_auth(email = email, cache = FALSE)
@@ -47,11 +47,11 @@ DEV_auth_set <- function(email, file = ".secrets/gs4-token.rds") {
 }
 
 #' @rdname DEV_auth
-#' 
-#' @importFrom googlesheets4 gs4_auth
-#' @importFrom gargle secret_read_rds
 #' @export
 DEV_auth_get <- function() {
+  if (!requireNamespace("googlesheets4")) {
+    stop("Please install `googlesheets4` to use this method.")
+  }
   TOKEN_FILE <- Sys.getenv("SHINYREVIEWER_TOKEN_FILE")
   gs4_auth(token = secret_read_rds(TOKEN_FILE, "SHINYREVIEWER_OAUTH_KEY"))
 }

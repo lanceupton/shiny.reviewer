@@ -10,12 +10,19 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 LazyData: true
+Config/renv/profiles/dev/dependencies:
+    attachment,
+    httpuv,
+    pkgload,
+    rmarkdown,
+    rsconnect,
+    rstudioapi,
+    shinylive,
+    usethis
 Depends: 
     R (== 4.4.0)
 Imports: 
     dplyr,
-    gargle,
-    googlesheets4,
     lubridate,
     R6,
     shiny,
@@ -23,9 +30,3 @@ Imports:
     shinyMobile,
     stringr,
     tibble
-Suggests:
-    attachment,
-    pkgload,
-    rsconnect,
-    rstudioapi,
-    usethis
