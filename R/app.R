@@ -56,6 +56,7 @@ make_app_server <- function(LATEST_REVIEWS, content_meta, callback) {
 
 #' @importFrom shinyjs useShinyjs
 app_resources <- function() {
+  addResourcePath("www", app_sys("app/www"))
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "www/styles.css"),
     useShinyjs()

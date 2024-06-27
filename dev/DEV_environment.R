@@ -11,3 +11,11 @@ message("* Use DEV_restart() to restart the R session.")
 DEV_restart <- function() {
   rstudioapi::restartSession(clean = TRUE)
 }
+
+message("* Use DEV_deploy() to deploy the demo app.")
+DEV_deploy <- function() {
+  rsconnect::deployApp(
+    appName = "shiny-reviewer-demo",
+    appFiles = c("app.R", "data", "DESCRIPTION", "inst", "NAMESPACE", "R", "renv.lock")
+  )
+}

@@ -17,6 +17,9 @@ The package also includes helper methods to configure authentication for
 Google Sheets, which enables persistent storage when deploying to
 services like [shinyapps.io](https://shinyapps.io).
 
+I have deployed a transient demo here:
+[shiny-reviewer-demo](https://lanceupton.shinyapps.io/shiny-reviewer-demo)
+
 ### Usage
 
 To install this package, execute the following:
