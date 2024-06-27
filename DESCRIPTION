@@ -17,7 +17,6 @@ Config/renv/profiles/dev/dependencies:
     rmarkdown,
     rsconnect,
     rstudioapi,
-    shinylive,
     usethis
 Depends: 
     R (== 4.4.0)
