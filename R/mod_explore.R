@@ -2,6 +2,7 @@
 #' @importFrom dplyr filter group_map rowwise
 mod_explore_ui <- function(id, reviews, content_meta) {
   ns <- NS(id)
+  # Create a content button for each content_id
   rowwise(content_meta) |>
     group_map(function(x, k) {
       xid <- x$id
@@ -34,7 +35,7 @@ mod_content_btn <- function(id, review, title) {
   tagAppendAttributes(
     tag = f7Button(
       inputId = ns("btn_open"),
-      label = title
+      label = make_content_label(title, review)
     ),
     class = determine_content_class(review)
   )

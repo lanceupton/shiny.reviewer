@@ -25,15 +25,15 @@ library(knitr)
 ### Overview
 
 `shiny.reviewer` is an R package providing a configurable [shiny app](https://shiny.posit.co/)
-that allows users to submit content reviews and interactively filter and view
-content based on the most recent review. The can be used for different types of
-content, such as educational courses, recipes, games, and books.
+allowing users submit and interactively filter and view content reviews. The
+app is designed to be accessed by multiple simultaneous users, on mobile
+devices, with a synchronized experience.
 
 The package also includes helper methods to configure authentication for Google
-Sheets, which enables persistent storage when deploying to services like
-[shinyapps.io](https://shinyapps.io).
+Sheets, which enables persistent storage when deploying to platforms like
+[shinyapps.io](https://shinyapps.io) or [Github Pages](https://pages.github.com/).
 
-I have deployed a transient demo here: [shiny-reviewer-demo](https://lanceupton.shinyapps.io/shiny-reviewer-demo)
+A demo is available here: [shiny-reviewer-demo](https://lanceupton.shinyapps.io/shiny-reviewer-demo)
 
 
 ### Usage
@@ -48,31 +48,27 @@ To run a simple example, execute the following:
 
 ```{r eval = FALSE}
 library(shiny.reviewer)
-reviewer <- ShinyReviewer$new(
-  reviews = REVIEWS_EXAMPLE, 
+app_run(
+  title = "Your Application Title",
   content_meta = CONTENT_META_EXAMPLE,
-  group_meta = GROUP_META_EXAMPLE
-)
-reviewer$run_app(
-  title = "Mario Kart Wii Track Logger",
-  callback = function(df) {
-    print(df)
-  }
+  reviews = REVIEWS_EXAMPLE, 
+  group_meta = GROUP_META_EXAMPLE,
+  launch.browser = TRUE
 )
 ```
 
-This creates and runs an application using the provided example content (Mario
-Kart Wii tracks). This will work fine, but there is more work to do if we want
-to synchronize data across application instances. There is where `callback`
-comes in handy. The below boilerplate code creates an application that syncs
-reviews to a Google Sheets file. It assumes that you have called
-`DEV_auth_set()`, which creates an encrypted gs4 token.
+This runs an application using the provided example content (Mario Kart Wii
+tracks). This will work fine, but you'll probably want to store new reviews
+somewhere persistent. This is where `callback` comes in handy. The below
+boilerplate code leverages the provided methods to sync reviews to a Google
+Sheets file. It assumes that you have called `DEV_auth_set()` to write an
+encrypted gs4 token to the project directory.
 
 ```{r eval = FALSE}
 library(shiny.reviewer)
 library(googlesheets4)
 DEV_auth_get()
-# Read the Google Sheets file configuration
+# Define Google sheets file ID and sheet here
 REVIEWS_SSID <- Sys.getenv("REVIEWS_SSID")
 REVIEWS_SHEET <- Sys.getenv("REVIEWS_SHEET")
 # Read the Google Sheets file
@@ -80,18 +76,19 @@ reviews <- read_sheet(ss = REVIEWS_SSID, sheet = REVIEWS_SHEET)
 # Read custom metadata
 content_meta <- read.csv("data-raw/CONTENT_META.csv")
 group_meta <- read.csv("data-raw/GROUP_META.csv")
-# Create and run the application
-reviewer <- ShinyReviewer$new(
-  reviews = reviews,
+# Run application
+app_run(
+  title = "Your Application Title",
   content_meta = content_meta,
-  group_meta = group_meta
-)
-reviewer$run_app(
-  title = "Mario Kart Wii Track Logger",
+  reviews = reviews, 
+  group_meta = group_meta,
+  # Append session reviews to the Google Sheets file
   callback = function(df) {
     sheet_append(ss = REVIEWS_SSID, data = df, sheet = REVIEWS_SHEET)
-  }
+  },
+  launch.browser = TRUE
 )
+
 ```    
 
 

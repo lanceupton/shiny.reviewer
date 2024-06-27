@@ -1,8 +1,7 @@
 
-#' @importFrom dplyr group_by slice_max ungroup
 #' @importFrom tibble tibble
 format_reviews <- function(df, latest = FALSE) {
-  df <- tibble(
+  tibble(
     content_id = as.character(df$content_id),
     timestamp = as.POSIXct(df$timestamp),
     rating = as.integer(df$rating),
@@ -10,10 +9,6 @@ format_reviews <- function(df, latest = FALSE) {
     blacklist = as.logical(df$blacklist),
     notes = as.character(df$notes)
   )
-  if (isTRUE(latest)) {
-    df <- group_by(df, content_id) |> slice_max(timestamp) |> ungroup()
-  }
-  return(df)
 }
 
 

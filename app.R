@@ -1,12 +1,12 @@
+
 pkgload::load_all()
-reviewer <- ShinyReviewer$new(
-  reviews = REVIEWS_EXAMPLE, 
+app_run(
+  title = "shiny.reviewer Demo Application",
   content_meta = CONTENT_META_EXAMPLE,
-  group_meta = GROUP_META_EXAMPLE
-)
-reviewer$run_app(
-  title = "Mario Kart Wii Track Logger",
+  reviews = REVIEWS_EXAMPLE, 
+  group_meta = GROUP_META_EXAMPLE,
   callback = function(df) {
     print(df)
-  }
+  },
+  launch.browser = TRUE
 )

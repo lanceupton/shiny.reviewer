@@ -23,7 +23,6 @@ Depends:
 Imports: 
     dplyr,
     lubridate,
-    R6,
     shiny,
     shinyjs,
     shinyMobile,
