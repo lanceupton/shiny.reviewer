@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, echo = FALSE}
+```{r setup, include = FALSE}
 library(knitr)
 ```
 
@@ -132,3 +132,5 @@ implement persistent data storage in remote environments.
 
 * [shinyMobile](https://rinterface.github.io/shinyMobile/) - This is so easy to use, and provides beautiful
 components.
+
+* [shinylive-r](https://github.com/RamiKrispin/shinylive-r) - A great tutorial I used to deploy a demo app to gh pages.

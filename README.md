@@ -110,3 +110,6 @@ A content button may be clicked to submit a review.
 
 - [shinyMobile](https://rinterface.github.io/shinyMobile/) - This is so
   easy to use, and provides beautiful components.
+
+- [shinylive-r](https://github.com/RamiKrispin/shinylive-r) - A great
+  tutorial I used to deploy a demo app to gh pages.
