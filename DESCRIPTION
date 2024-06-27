@@ -1,7 +1,7 @@
 Package: shiny.reviewer
 Title: Shiny Reviewer.
 Description: An application to interactively review content.
-Version: 1.0.4
+Version: 1.0.5
 Authors@R:
     person("Lance", "Upton", email = "lance.upton@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9110-5160"))

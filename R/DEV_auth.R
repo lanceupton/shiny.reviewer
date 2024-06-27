@@ -20,7 +20,6 @@ DEV_auth_set <- function(email, file = ".secrets/gs4-token.rds") {
   key <- secret_make_key()
   gs4_auth(email = email, cache = FALSE)
   message("Saving the token to ", file)
-  browser()
   dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
   secret_write_rds(gs4_token(), file, key)
   message("Configuring SHINYREVIEWER_TOKEN_FILE and SHINYREVIEWER_OAUTH_KEY")
