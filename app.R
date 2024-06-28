@@ -8,5 +8,6 @@ app_run(
   callback = function(df) {
     print(df)
   },
+  public_proof = TRUE,
   launch.browser = TRUE
 )

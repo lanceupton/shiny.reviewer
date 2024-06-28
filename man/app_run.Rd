@@ -10,6 +10,7 @@ app_run(
   reviews = NULL,
   group_meta = NULL,
   callback = NULL,
+  public_proof = FALSE,
   ...
 )
 }
@@ -27,6 +28,8 @@ used to create group cards.}
 
 \item{callback}{(Optional) A \verb{function(df)} to do something with the
 reviews submitted within a session when it ends.}
+
+\item{public_proof}{(default FALSE) If TRUE, don't record user text input.}
 
 \item{...}{Options passed to \code{shiny::shinyApp()}}
 }

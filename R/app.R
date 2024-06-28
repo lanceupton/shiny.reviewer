@@ -14,13 +14,14 @@ app_sys <- function(...) {
 #'   used to create group cards.
 #' @param callback (Optional) A `function(df)` to do something with the
 #'   reviews submitted within a session when it ends.
+#' @param public_proof (default FALSE) If TRUE, don't record user text input.
 #' @param ... Options passed to `shiny::shinyApp()`
 #' 
 #' @import shiny
 #' @import shinyMobile
 #' @importFrom dplyr bind_rows filter group_walk rowwise slice_max
 #' @export
-app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, callback = NULL, ...) {
+app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, callback = NULL, public_proof = FALSE, ...) {
   # Format application data
   reviews <- format_reviews(reviews)
   content_meta <- format_content_meta(content_meta)
@@ -55,6 +56,14 @@ app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, call
       )
     },
     server = function(input, output, session) {
+      message("public_proof: ", public_proof)
+      if (isTRUE(public_proof)) {
+        f7Notif(
+          title = "Heads up!",
+          text = "This app is running in public mode. Your text inputs are ignored.",
+          icon = f7Icon("info")
+        )
+      }
       # Returns list of filter settings
       filter_settings <- mod_filter_server("filter")
       # Styles content based on latest review
@@ -69,6 +78,11 @@ app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, call
       # Also update LATEST_REVIEWS for sibling sessions
       observeEvent(add_review(), {
         new <- add_review()
+        # Scrub notes public-proof
+        if (isTRUE(public_proof)) {
+          xreview <- LATEST_REVIEWS[[new$content_id]]
+          new$notes <- xreview$notes
+        }
         current <- SESSION_REVIEWS()
         updated <- bind_rows(current, new)
         SESSION_REVIEWS(updated)
