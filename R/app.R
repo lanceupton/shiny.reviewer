@@ -62,7 +62,7 @@ app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, call
       # Returns content_id of clicked content
       click_content <- mod_explore_server("explore", LATEST_REVIEWS, content_meta)
       # Shows content review popup and returns new review
-      add_review <- mod_review_server("review", LATEST_REVIEWS, click_content)
+      add_review <- mod_review_server("review", LATEST_REVIEWS, content_meta, click_content)
       # Object to hold reviews submitted within the session
       SESSION_REVIEWS <- reactiveVal()
       # Add reviews to SESSION_REVIEWS as they are submitted

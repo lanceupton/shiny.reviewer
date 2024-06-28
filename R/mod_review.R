@@ -1,13 +1,14 @@
 
-mod_review_server <- function(id, RV_REVIEWS, click_content) {
+mod_review_server <- function(id, RV_REVIEWS, content_meta, click_content) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
     observeEvent(click_content(), {
       xid <- click_content()
       review <- RV_REVIEWS[[xid]]
+      meta <- filter(content_meta, id == xid)
       f7Popup(
         id = shiny:::createUniqueId(8),
-        title = review$content_id,
+        title = meta$title,
         swipeToClose = TRUE,
         f7Block(
           tags$p(tags$strong("Last Reviewed:"), friendly_timestamp(review$timestamp) %||% "Never :(")
