@@ -43,8 +43,8 @@ app_run(
 ```
 
 This runs an application using the provided example content (Mario Kart
-Wii tracks). This will work fine, but you’ll probably want to store new
-reviews somewhere persistent. This is where `callback` comes in handy.
+Wii tracks). This will work fine, but you’ll probably want to record all
+the reviews submitted by users. This is where `callback` comes in handy.
 The below boilerplate code leverages the provided methods to sync
 reviews to a Google Sheets file. It assumes that you have called
 `DEV_auth_set()` to write an encrypted gs4 token to the project
@@ -52,6 +52,7 @@ directory.
 
 ``` r
 library(shiny.reviewer)
+library(gargle)
 library(googlesheets4)
 DEV_auth_get()
 # Define Google sheets file ID and sheet here
