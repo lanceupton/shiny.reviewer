@@ -53,10 +53,11 @@ write an encrypted gs4 token to the project directory.
 library(shiny.reviewer)
 library(gargle)
 library(googlesheets4)
-DEV_auth_get()
 # Define Google sheets file ID and sheet here
 REVIEWS_SSID <- Sys.getenv("REVIEWS_SSID")
 REVIEWS_SHEET <- Sys.getenv("REVIEWS_SHEET")
+# Fetch the gs4 token
+DEV_auth_get()
 # Read the Google Sheets file
 reviews <- read_sheet(ss = REVIEWS_SSID, sheet = REVIEWS_SHEET)
 # Read custom metadata
