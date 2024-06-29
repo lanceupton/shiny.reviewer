@@ -58,11 +58,11 @@ app_run(
 ```
 
 This runs an application using the provided example content (Mario Kart Wii
-tracks). This will work fine, but you'll probably want to record all the reviews
-submitted by users. This is where `callback` comes in handy. The below
-boilerplate code leverages the provided methods to sync reviews to a Google
-Sheets file. It assumes that you have called `DEV_auth_set()` to write an
-encrypted gs4 token to the project directory.
+tracks). This will work fine, but you'll probably want to define your own
+content and record reviews submitted by users. The below boilerplate code
+leverages the provided methods to sync reviews to a Google Sheets file. It
+assumes that you have called `DEV_auth_set()` to write an encrypted gs4 token to
+the project directory.
 
 ```{r eval = FALSE}
 library(shiny.reviewer)
@@ -94,34 +94,43 @@ app_run(
 
 ### Features
 
-**View Content**
+#### Explore Content
 
 The main interface includes a button for each content item, styled based on the
 most recent review.
 
-```{r, echo = FALSE}
-kable(
-  x = data.frame(
-    c("Blacklisted (`blacklist=TRUE`)", "Top Rated (`rating=5`)", "Unreviewed (`timestamp=NA`)", "All Other Content"),
-    c("![](readme_files/content_blacklisted.png)", "![](readme_files/content_5star.png)", "![](readme_files/content_unreviewed.png)", "![](readme_files/content_default.png)")
-  ),
-  col.names = c("Content Class", "Content Preview")
-)
-```
+**(TODO)** If `group_meta` is provided, content is grouped into cards.
 
-Additionally, all content buttons display the emojis included within the `notes`
-field of the most recent review.
+**Blacklisted (`blacklist=TRUE`)**
 
-**Filter Content**
+![](readme_files/content_blacklisted.png)
 
-The left sidebar includes an interface to filter content items based on the most
-recent review.
+**Top Rated (`rating=5`)**
 
-The right sidebar includes an interface to search for content by title.
+![](readme_files/content_5star.png)
 
-**Review Content**
+**Unreviewed (`timestamp=NA`)**
 
-A content button may be clicked to submit a review.
+![](readme_files/content_unreviewed.png)
+
+**All Other Content**
+
+![](readme_files/content_default.png)
+
+Content buttons also display all emojis included in the `notes` field.
+
+
+#### Filter Content
+
+**(TODO)** The left sidebar allows you to filter content based on the most recent review.
+
+**(TODO)** The right sidebar allows you to search for content by title.
+
+
+#### Review Content
+
+When a content button is clicked, a popup is displayed which allows you to
+submit a content review.
 
 
 ### Thanks
