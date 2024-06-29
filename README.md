@@ -5,7 +5,7 @@ shiny.reviewer
 <!-- badges: start -->
 <!-- badges: end -->
 
-### Overview
+## Overview
 
 `shiny.reviewer` is an R package providing a configurable [shiny
 app](https://shiny.posit.co/) allowing users submit and interactively
@@ -21,7 +21,7 @@ Pages](https://pages.github.com/).
 A demo is available here:
 [shiny-reviewer-demo](https://lanceupton.shinyapps.io/shiny-reviewer-demo)
 
-### Usage
+## Usage
 
 To install this package, execute the following:
 
@@ -77,9 +77,9 @@ app_run(
 )
 ```
 
-### Features
+## Features
 
-#### Explore Content
+### Explore Content
 
 The main interface includes a button for each content item, styled based
 on the most recent review.
@@ -104,19 +104,19 @@ on the most recent review.
 
 Content buttons also display all emojis included in the `notes` field.
 
-#### Filter Content
+### Filter Content
 
 **(TODO)** The left sidebar allows you to filter content based on the
 most recent review.
 
 **(TODO)** The right sidebar allows you to search for content by title.
 
-#### Review Content
+### Review Content
 
 When a content button is clicked, a popup is displayed which allows you
 to submit a content review.
 
-### Thanks
+## Thanks
 
 - [googlesheets4](https://googlesheets4.tidyverse.org/) - This makes it
   easy to implement persistent data storage in remote environments.
