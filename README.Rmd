@@ -60,11 +60,11 @@ app_run(
 This runs an application using the provided example content (Mario Kart Wii
 tracks). This will work fine, but you'll probably want to define your own
 content and record reviews submitted by users. The below boilerplate code
-leverages the provided methods to sync reviews to a Google Sheets file. It
-assumes that you have called `DEV_auth_set()` to write an encrypted gs4 token to
-the project directory.
+demonstrates how to do this. It assumes that you have called `DEV_auth_set()` to
+write an encrypted gs4 token to the project directory.
 
 ```{r eval = FALSE}
+# Load packages
 library(shiny.reviewer)
 library(gargle)
 library(googlesheets4)
