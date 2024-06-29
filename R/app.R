@@ -80,9 +80,10 @@ app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, call
         new <- add_review()
         # Scrub notes public-proof
         if (isTRUE(public_proof)) {
-          xreview <- LATEST_REVIEWS[[new$content_id]] %||% ""
-          new$notes <- xreview$notes
+          xreview <- LATEST_REVIEWS[[new$content_id]]
+          new$notes <- xreview$notes %||% ""
         }
+        print(new)
         current <- SESSION_REVIEWS()
         updated <- bind_rows(current, new)
         SESSION_REVIEWS(updated)
