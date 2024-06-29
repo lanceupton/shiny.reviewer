@@ -83,7 +83,6 @@ app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, call
           xreview <- LATEST_REVIEWS[[new$content_id]]
           new$notes <- xreview$notes %||% ""
         }
-        print(new)
         current <- SESSION_REVIEWS()
         updated <- bind_rows(current, new)
         SESSION_REVIEWS(updated)
@@ -93,6 +92,8 @@ app_run <- function(title, content_meta, reviews = NULL, group_meta = NULL, call
       onSessionEnded(function() {
         if (is.null(callback)) return()
         df <- isolate(SESSION_REVIEWS())
+        if (is.null(df)) return()
+        if (nrow(df) == 0) return()
         callback(df)
       })
     },
